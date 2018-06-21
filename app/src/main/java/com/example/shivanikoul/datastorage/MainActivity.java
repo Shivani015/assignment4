@@ -24,21 +24,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         name =findViewById(R.id.nameET);
-        age =findViewById(R.id.ageEt);
-        cls =findViewById(R.id.classEt);
+        age =findViewById(R.id.ageET);
+        cls =findViewById(R.id.classET);
         btn =findViewById(R.id.submitbtn);
 
         btn.setOnClickListener (new View.OnClickListener(){
             @Override
             public void onClick(View view){
 
-                 if(TextUtils.isEmpty(name.getText().toString())){
-                name.setError("Required Filed");
-                return;
+                 if(TextUtils.isEmpty(name.getText().toString())) {
+                     name.setError("Required Filed");
+                     return;
+                 }
 
-                if(TextUtils.isEmpty(age.getText().toString())){
+                if(TextUtils.isEmpty(age.getText().toString())) {
                     age.setError("Required Filed");
                     return;
+                }
 
                     if(TextUtils.isEmpty(cls.getText().toString())){
                         cls.setError("Required Filed");
@@ -50,33 +52,35 @@ public class MainActivity extends AppCompatActivity {
                 userclass =cls.getText().toString();
 
                 SharedPreferences sp =getSharedPreferences("details",MODE_PRIVATE);
-                SharedPreferences.Editor editor =sp.edit()
+                SharedPreferences.Editor editor =sp.edit();
                 editor.putString("name",userName);
                 editor.putString("age",userAge);
                 editor.putString("class",userclass);
                 editor.commit();
 //                 Alertdialogbox
-                AlertDialog.Builder builder =new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Submit Confirmation");
-                builder.setMessage("Are you sure to continue");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("subnit confirmation");
+                builder.setMessage("Are you sure want to continue");
+                builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int Which) {
-                        Intent intent =new Intent(MainActivity.this,sharepref.class);
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(MainActivity.this, sharepref.class);
                         startActivity(intent);
-
                     }
                 });
-                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int Which) {
-                        finish();
 
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
                     }
 
+                });
 
+                builder.show();
 
             }
         });
     }
+
 }

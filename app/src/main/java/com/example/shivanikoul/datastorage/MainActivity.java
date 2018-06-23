@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.DialogPreference;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import android.widget.EditText;
 import java.util.jar.Attributes;
 
 public class MainActivity extends AppCompatActivity {
-    EditText name,age,cls;
+    EditText name,email,password;
     Button btn;
 
     @Override
@@ -24,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         name =findViewById(R.id.nameET);
-        age =findViewById(R.id.ageET);
-        cls =findViewById(R.id.classET);
+        email =findViewById(R.id.emailET);
+        password =findViewById(R.id.passwordET);
         btn =findViewById(R.id.submitbtn);
 
         btn.setOnClickListener (new View.OnClickListener(){
@@ -37,25 +38,25 @@ public class MainActivity extends AppCompatActivity {
                      return;
                  }
 
-                if(TextUtils.isEmpty(age.getText().toString())) {
-                    age.setError("Required Filed");
+                if(TextUtils.isEmpty(email.getText().toString())) {
+                    email.setError("Required Filed");
                     return;
                 }
 
-                    if(TextUtils.isEmpty(cls.getText().toString())){
-                        cls.setError("Required Filed");
+                    if(TextUtils.isEmpty(password.getText().toString())){
+                        password.setError("Required Filed");
                         return;
             }
-                String userName,userAge,userclass =null;
+                String userName,userEmail,userPassword =null;
                 userName = name.getText().toString();
-                userAge  =age.getText().toString();
-                userclass =cls.getText().toString();
+                userEmail = email.getText().toString();
+                userPassword =password.getText().toString();
 
                 SharedPreferences sp =getSharedPreferences("details",MODE_PRIVATE);
                 SharedPreferences.Editor editor =sp.edit();
                 editor.putString("name",userName);
-                editor.putString("age",userAge);
-                editor.putString("class",userclass);
+                editor.putString("email",userEmail);
+                editor.putString("password",userPassword);
                 editor.commit();
 //                 Alertdialogbox
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

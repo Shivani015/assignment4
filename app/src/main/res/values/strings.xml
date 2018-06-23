@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">datastorage</string>
+    <string name="sign_up_form">SIGN UP FORM</string>
+    <string name="password">password</string>
+    <string name="name">Name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="button">Button</string>
+    <string name="name">Name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">password</string>
 </resources>

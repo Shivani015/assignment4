@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class sharepref extends AppCompatActivity {
 
     TextView Hello,correct,wrong;
-    String userName,userAge,userClass;
+    String userName,userEmail,userPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,11 @@ public class sharepref extends AppCompatActivity {
 //         get the values
 
         userName = sp.getString("Name","none");
-        userAge = sp.getString("age","none");
-        userClass =sp.getString("class","none");
+        userEmail = sp.getString("Email","none");
+        userPassword =sp.getString("Password","none");
         Hello.setText(userName);
-        correct.setText(userAge);
-        wrong.setText(userClass);
+        correct.setText(userEmail);
+        wrong.setText(userPassword);
 
     }
 }
